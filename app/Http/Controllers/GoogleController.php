@@ -20,7 +20,7 @@ class GoogleController extends Controller
             $user = User::where('google_id', $googleUser->id)->first();
 
             if($user){
-                return redirect('/');
+                return redirect('/dashboard')->with('success', 'Login Successfully!');
             }else{
                 $userData = User::create([
                     'name' => $googleUser->name,
@@ -30,12 +30,12 @@ class GoogleController extends Controller
                 ]);
 
                 if($userData){
-                    return redirect('/');
+                    return redirect('/dashboard')->with('success', 'Login Successfully!');
                 }
             }
 
         }catch(\Exception $e){
-            return redirect('/login')->with('fail', $e->getMessage());
+            return redirect('/')->with('fail', $e->getMessage());
         }
     }
 

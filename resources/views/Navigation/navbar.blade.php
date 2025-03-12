@@ -88,7 +88,7 @@
                 <div class="dropdown-divider"></div>
             </li>
             <li>
-                <a class="dropdown-item" href="auth-login-basic.html">
+                <a class="dropdown-item" href="{{route('logout')}}">
                 <i class="bx bx-power-off me-2"></i>
                 <span class="align-middle">Log Out</span>
                 </a>
@@ -97,5 +97,23 @@
         </li>
         <!--/ User -->
         </ul>
+        @if (Session::has('success'))
+            <div id="success-message"
+                class="text-success p-3 rounded border border-success bg-white shadow"
+                style="position: fixed; top: 20px; right: 20px; z-index: 1050; transition: opacity 0.5s ease-in-out;">
+                {{ Session::get('success') }}
+            </div>
+
+            <script>
+                setTimeout(function() {
+                    let message = document.getElementById('success-message');
+                    if (message) {
+                        message.style.opacity = '0';
+                        setTimeout(() => message.remove(), 500);
+                    }
+                }, 3000);
+            </script>
+        @endif
+
     </div>
 </nav>

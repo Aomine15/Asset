@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogAuthentication;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpKernel\Log\Logger;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/profile', function () {
     return view('Profile.profile');
@@ -16,12 +13,12 @@ Route::get('/profile', function () {
 
 Route::controller(LogAuthentication::class)->group(function(){
 
-    Route::get('/login', 'Login')->name('Login');
+    Route::get('/', 'Login')->name('Login');
     Route::get('/register', 'Register')->name('Register');
     Route::get('/forgot_password', 'Forgot_password')->name('Forgot');
 
     Route::post('/register', 'RegisterAuth')->name('Registered');
-    Route::post('/login', 'LoginAuth')->name('LoginVerified');
+    Route::post('/', 'LoginAuth')->name('LoginVerified');
 
 });
 
@@ -30,6 +27,16 @@ Route::controller((GoogleController::class))->group(function(){
 
     Route::get('/auth/google', 'RedirectToGoogle');
     Route::get('/auth/google/callback', 'handleGoogleCallBack');
+
+});
+
+
+Route::controller(PagesController::class)->group(function(){
+
+    Route::get('/dashboard', 'Dashboard')->name('dashboard');
+    Route::get('/users', 'ViewUser')->name('users');
+    Route::get('/profile', 'Profile')->name('profile');
+    Route::get('/logout', 'Logout')->name('logout');
 
 });
 

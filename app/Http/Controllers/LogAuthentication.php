@@ -24,23 +24,23 @@ class LogAuthentication extends Controller
 
         $request->validate([
 
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required|string'
 
         ]);
 
 
         $user = User::where('email', $request->email)
-                ->orWhere('name', $request->name)
+                ->orWhere('name', $request->email)
                 ->first();
 
         if($user && Hash::check($request->password, $user->password)){
 
-            return redirect('/')->with('success', 'Login Successful');
+            return redirect('/dashboard')->with('success', 'Login Successful');
 
         }
 
-        return redirect('/login')->with('fail', 'Invalid username or password!');
+        return redirect('/')->with('fail', 'Invalid username or password!');
 
     }
 
