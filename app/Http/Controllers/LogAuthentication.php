@@ -30,7 +30,9 @@ class LogAuthentication extends Controller
         ]);
 
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)
+                ->orWhere('name', $request->name)
+                ->first();
 
         if($user && Hash::check($request->password, $user->password)){
 
