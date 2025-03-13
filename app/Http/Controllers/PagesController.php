@@ -18,7 +18,7 @@ class PagesController extends Controller
     }
 
     public function Logout(){
-        return redirect('/');
+        return redirect('/')->with('success', 'Logout Successful!');
     }
 
     public function ViewUser(Request $request)

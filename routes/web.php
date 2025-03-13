@@ -6,11 +6,6 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/profile', function () {
-    return view('Profile.profile');
-});
-
-
 Route::controller(LogAuthentication::class)->group(function(){
 
     Route::get('/', 'Login')->name('Login');
