@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -60,70 +47,64 @@
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
   </head>
 
   <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
+        <div class="layout-container">
+
         <!-- Menu -->
-
-        @include('Navigation.sidebar')
-
+                @include('Navigation.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
 
-            @include('Navigation.navbar')
+            <!-- Navbar -->
+                @include('Navigation.navbar')
+            <!-- / Navbar -->
 
-          <!-- / Navbar -->
+            <!-- Content wrapper -->
+                <div class="content-wrapper">
+                <!-- Content -->
 
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
-            @if (Route::currentRouteName() == 'users')
-                @yield('users')
-            @endif
-            @yield('profile')
-            <!-- / Content -->
+                    {{-- Dashboard Content --}}
+                    @if (Route::currentRouteName() === "dashboard")
+                        @yield('dashboard')
+                    @endif
+
+                    @if (Route::currentRouteName() === "users")
+                        @yield('users')
+                    @endif
+
+                    @if (Route::currentRouteName() === "profile")
+                        @yield('profile')
+                    @endif
 
 
-          </div>
-          <!-- Content wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+                <!-- / Content -->
+                </div>
+            <!-- Content wrapper -->
         </div>
         <!-- / Layout page -->
-      </div>
+        </div>
 
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-    <!-- / Layout wrapper -->
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="../assets/js/dashboards-analytics.js"></script>
-
-    @yield('scripts')
-
-  </body>
-</html>
+    @include('Navigation.footer')
