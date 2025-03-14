@@ -78,7 +78,7 @@
             <div class="card-body">
               <!-- Logo -->
               <!-- /Logo -->
-              <h3 class="mb-4 mt-4">Welcome to Asset Management System</h3>
+              <h3 class="mb-4 mt-4">Asset Management System</h3>
               <p class="mb-3">Sign up here!</p>
 
                 @if (Session::has('fail'))
@@ -118,6 +118,20 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
+                <div class="mb-3 form-password-toggle">
+                    <label class="form-label" for="password">Confirm Password</label>
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="password"
+                        id="password_confirmation"
+                        class="form-control"
+                        name="password_confirmation"
+                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                        aria-describedby="confirm password"
+                      />
+                      <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                  </div>
 
                 <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
               </form>

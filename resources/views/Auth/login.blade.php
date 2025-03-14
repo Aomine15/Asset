@@ -63,7 +63,7 @@
           <!-- Register -->
           <div class="card">
             <div class="card-body">
-              <h3 class="mb-4 mt-4">Welcome to Asset Management System</h3>
+              <h3 class="mb-4 mt-4">Asset Management System</h3>
               <p class="mb-3">Please sign-in to your account</p>
 
                 @if (Session::has('success'))

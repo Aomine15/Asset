@@ -50,7 +50,7 @@ class LogAuthentication extends Controller
 
             'email' => 'required|email:unique:users',
             'username' => 'required|string|min:6|max:50',
-            'password' => 'required|string|min:6|max:20',
+            'password' => 'required|string|confirmed|min:6|max:20',
 
         ]);
 
@@ -63,7 +63,7 @@ class LogAuthentication extends Controller
             ]);
 
             if(User::create($user)){
-                return redirect('/login')->with('success', 'Registered Successfully!');
+                return redirect('/')->with('success', 'Registered Successfully!');
             }
 
         }catch(\Exception $e){
