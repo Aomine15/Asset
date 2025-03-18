@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LogAuthentication extends Controller
@@ -24,17 +25,23 @@ class LogAuthentication extends Controller
 
         $request->validate([
 
-            'email' => 'required',
+            'login' => 'required',
             'password' => 'required|string'
 
         ]);
 
+        $login = $request->input('login');
+        $logpass = $request->input('password');
 
-        $user = User::where('email', $request->email)
-                ->orWhere('name', $request->email)
+
+        $user = User::where('email', $login)
+                ->orWhere('name', $login)
                 ->first();
 
-        if($user && Hash::check($request->password, $user->password)){
+
+        if($user && Auth::attempt(['email' => $user->email, 'password' => $logpass])){
+
+            $request->session()->regenerate();
 
             return redirect('/dashboard')->with('success', 'Login Successful');
 
@@ -71,6 +78,14 @@ class LogAuthentication extends Controller
             return redirect('/register')->with('fail', $e->getMessage());
 
         }
+
+    }
+
+    public function Logout(){
+
+        Auth::logout();
+
+        return redirect('/')->with('success', 'Logout Successful!');
 
     }
 

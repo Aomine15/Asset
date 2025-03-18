@@ -15,6 +15,8 @@ Route::controller(LogAuthentication::class)->group(function(){
     Route::post('/register', 'RegisterAuth')->name('Registered');
     Route::post('/', 'LoginAuth')->name('LoginVerified');
 
+    Route::get('/logout', 'Logout')->name('logout');
+
 });
 
 
@@ -31,7 +33,7 @@ Route::controller(PagesController::class)->group(function(){
     Route::get('/dashboard', 'Dashboard')->name('dashboard');
     Route::get('/users', 'ViewUser')->name('users');
     Route::get('/profile', 'Profile')->name('profile');
-    Route::get('/logout', 'Logout')->name('logout');
+
 
 });
 

@@ -17,9 +17,7 @@ class PagesController extends Controller
         return view('Profile.profile');
     }
 
-    public function Logout(){
-        return redirect('/')->with('success', 'Logout Successful!');
-    }
+    
 
     public function ViewUser(Request $request)
     {

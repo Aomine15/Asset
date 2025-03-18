@@ -87,7 +87,7 @@
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email"
+                    name="login"
                     placeholder="Enter your email or username"
                     autofocus
                   />

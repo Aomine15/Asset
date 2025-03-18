@@ -118,6 +118,9 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
+                @error('password')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
                 <div class="mb-3 form-password-toggle">
                     <label class="form-label" for="password">Confirm Password</label>
                     <div class="input-group input-group-merge">
@@ -131,7 +134,10 @@
                       />
                       <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     </div>
-                  </div>
+                </div>
+                  @error('confirm password')
+                    <span class="text-danger">{{$message}}</span>
+                @enderror
 
                 <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
               </form>
