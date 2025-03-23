@@ -45,12 +45,12 @@
 
                         <div class="form-group mb-3">
                             <label for="">Username</label>
-                            <input type="text" name = "full_name" class="name form-control" value="{{old('full_name')}}" placeholder = "Enter your username">
+                            <input type="text" name = "username" class="username form-control" value="{{old('username')}}" placeholder = "Enter your username">
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="">Email</label>
-                            <input type="email" name = "email" class="email form-control" value="{{old('email')}}" placeholder = "Enter your email address">
+                            <input type="email" name = "email" class="email form-control" value="{{old('email')}}" placeholder = "example@gmail.com">
                         </div>
 
                         <div class="form-group mb-3">
@@ -66,7 +66,7 @@
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary add_user">Save</button>
+                    <button type="button" class="btn btn-primary add_user">Create</button>
                 </div>
                 </div>
             </div>
@@ -114,8 +114,8 @@
                                     <td>${item.email}</td>
                                     <td>${item.created_at}</td>
                                     <td coldspan="2">
-                                        <button class="btn btn-primary btn-sm" value="${item.id}">Edit</button>
-                                        <button class="btn btn-danger btn-sm" value="${item.id}">Delete</button>
+                                        <button class="btn btn-primary btn-sm" value="${item.id}"> <i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-danger btn-sm" value="${item.id}"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                             `);
@@ -131,14 +131,15 @@
                 });
             }
 
-
+            // Add user
             $(document).on('click', '.add_user', function (e) {
                 e.preventDefault();
 
                 var data = {
-                    'full_name': $('.name').val(),
+                    'username': $('.username').val(),
                     'email': $('.email').val(),
                     'password': $('.password').val(),
+                    'password_confirmation': $('.password_confirmation').val(),
                 };
 
                 $.ajaxSetup({
@@ -154,11 +155,26 @@
                     dataType: "json",
                     success: function (response) {
                         if (response.status == 400) {
-                            $('#errorlist').html("");
-                            $('#errorlist').addClass("alert alert-danger");
-                            $.each(response.errors, function (key, err_values) {
-                                $('#errorlist').append('<li>' + err_values + '</li>')
+                            $('#errorlist').html("").addClass("alert alert-danger");
+
+                            // Clear only the invalid input fields
+                            $('.form-control').each(function () {
+                                let inputName = $(this).attr("name");
+                                if (response.errors[inputName]) {
+                                    $(this).val("");
+
+                                    if (inputName === "password") {
+                                        $('.password_confirmation').val("");
+                                    }
+                                }
+
+
                             });
+
+                            $.each(response.errors, function (key, err_values) {
+                                $('#errorlist').append('<li>' + err_values + '</li>');
+                            });
+
                         } else {
                             $('#errorlist').html("");
                             $('#successmessage').html(
@@ -178,6 +194,11 @@
 
             $('#addUser').on('shown.bs.modal', function () {
                 $('.modal-backdrop').css('background-color', 'rgba(255, 255, 255, 0.1)'); // White with 80% transparency
+            });
+
+            $('#addUser').on('hidden.bs.modal', function () {
+                $(this).find('input').val("");
+                $('#errorlist').html("").removeClass("alert alert-danger");;
             });
 
 

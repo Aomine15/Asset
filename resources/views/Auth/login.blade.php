@@ -117,11 +117,7 @@
                 </div>
               </form>
 
-              <div class="mb-3">
 
-                <a href="/auth/google"> Login using <i class="bi bi-google"></i></a>
-
-              </div>
 
               <p class="text-center">
 
@@ -130,6 +126,20 @@
                   <span>Create an account</span>
                 </a>
               </p>
+              <br>
+
+              <div class="text-center">
+                <p>or sign in with</p>
+                <hr>
+
+                <a href="/auth/google">
+                    <i class="bi bi-google me-3 fs-large text-danger"></i>
+                </a>
+
+                <a href="/auth/facebook">
+                    <i class="bi bi-facebook me-2 fs-large"></i>
+                </a>
+            </div>
             </div>
           </div>
           <!-- /Register -->

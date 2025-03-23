@@ -30,10 +30,14 @@ Route::controller((GoogleController::class))->group(function(){
 
 Route::controller(PagesController::class)->group(function(){
 
-    Route::get('/dashboard', 'Dashboard')->name('dashboard');
+    Route::get('/dashboard', 'Dashboard')
+    ->middleware('login-auth')
+    ->name('dashboard');
+
+    Route::post('/users', 'AddUser');
+
     Route::get('/users', 'ViewUser')->name('users');
     Route::get('/profile', 'Profile')->name('profile');
 
 
 });
-

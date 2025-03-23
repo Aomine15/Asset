@@ -17,11 +17,11 @@ class PagesController extends Controller
         return view('Profile.profile');
     }
 
-    
+
 
     public function ViewUser(Request $request)
     {
-        $all_users = User::paginate(5);
+        $all_users = User::paginate(3);
 
         if ($request->ajax()) {
             return response()->json([
@@ -37,7 +37,7 @@ class PagesController extends Controller
 
         $validator = Validator::make( $request->all(), [
 
-            'full_name' => 'required|string',
+            'username' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|confirmed|min:6|max:20',
 
@@ -54,7 +54,7 @@ class PagesController extends Controller
 
             $user = new User();
 
-            $user->name = $request->full_name;
+            $user->name = $request->username;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();

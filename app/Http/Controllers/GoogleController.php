@@ -6,22 +6,27 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
 {
-    public function RedirectToGoogle(){
+    public function RedirectToGoogle()
+    {
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleGoogleCallBack(){
-        try{
-
+    public function handleGoogleCallBack()
+    {
+        try {
             $googleUser = Socialite::driver('google')->user();
             $user = User::where('google_id', $googleUser->id)->first();
 
-            if($user){
-                return redirect('/dashboard')->with('success', 'Login Successfully!');
-            }else{
+            if ($user) {
+                Auth::login($user);
+                request()->session()->regenerate();
+
+                return redirect('/dashboard')->with('success', 'Login Successful');
+            } else {
                 $userData = User::create([
                     'name' => $googleUser->name,
                     'email' => $googleUser->email,
@@ -29,14 +34,12 @@ class GoogleController extends Controller
                     'password' => Hash::make('P@ssw0rd')
                 ]);
 
-                if($userData){
-                    return redirect('/dashboard')->with('success', 'Login Successfully!');
-                }
-            }
+                Auth::login($userData);
 
-        }catch(\Exception $e){
+                return redirect('/dashboard')->with('success', 'Login Successfully!');
+            }
+        } catch (\Exception $e) {
             return redirect('/')->with('fail', $e->getMessage());
         }
     }
-
 }
