@@ -144,7 +144,11 @@
                 </a>
 
                 <a href="/auth/facebook">
-                    <i class="bi bi-facebook me-2 fs-large"></i>
+                    <i class="bi bi-facebook me-3 fs-large"></i>
+                </a>
+
+                <a href="/auth/github">
+                    <i class="bi bi-github me-3 fs-large text-dark"></i>
                 </a>
             </div>
             </div>
@@ -173,9 +177,6 @@
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
