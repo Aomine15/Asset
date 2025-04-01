@@ -11,15 +11,11 @@
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
         <div class="navbar-nav align-items-center">
-        <div class="nav-item d-flex align-items-center">
-            <i class="bx bx-search fs-4 lh-0"></i>
-            <input
-            type="text"
-            class="form-control border-0 shadow-none"
-            placeholder="Search..."
-            aria-label="Search..."
-            />
-        </div>
+            <div class="nav-item d-flex align-items-center">
+                <div class="mt-3">
+                    <h4>Failure Prediction System for Asset Management</h4>
+                </div>
+            </div>
         </div>
         <!-- /Search -->
 

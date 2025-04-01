@@ -3,28 +3,46 @@
 @section('users')
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="/dashboard">Dashboard</a> / <span> Users</h4>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/dashboard">Dashboad</a>x`
+                </li>
+                <li class="breadcrumb-item active">Users</li>
+            </ol>
+        </nav>
 
         <div class="card">
             <div class="card-header">
-                <div style="font-size: 1.5em">User information
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#addUser" class="btn btn-primary float-end">Add User</a>
-                </div>
+
+                <h5 class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2>User information</h2>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-m" data-bs-toggle="modal" data-bs-target="#addUser">
+                            Add User
+                        </button>
+                    </div>
+                </h5>
             </div>
             <div class="card-body">
-                <div id="successmessage">
-                </div>
-                <table class="table table-sm table-hover">
-                    <thead class="table-light">
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Registration Date</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody class="table-group-divider">
+                    <div id="successmessage">
 
-                    </tbody>
-                </table>
+                    </div>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Registration Date</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+
+                            </tbody>
+                        </table>
+                    </div>
                 <div class="pagination-links">
                     {!! $all_users->links() !!}
                 </div>
@@ -109,13 +127,15 @@
                         $("tbody").html("");
                         $.each(response.all_users.data, function (key, item) {
                             $("tbody").append(`
-                                <tr>
+                                <tr class="table-row row-${item.id}">
                                     <td>${item.name}</td>
                                     <td>${item.email}</td>
                                     <td>${item.created_at}</td>
                                     <td coldspan="2">
-                                        <button class="btn btn-primary btn-sm" value="${item.id}"> <i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm" value="${item.id}"><i class="bi bi-trash"></i></button>
+                                        <a class="bx bx-edit-alt text-primary me-2" type="button"
+                                        </a>
+                                        <a class="bx bx-trash text-danger" type="button"
+                                        </a>
                                     </td>
                                 </tr>
                             `);

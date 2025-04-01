@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\LogAuthentication;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +20,15 @@ Route::controller(LogAuthentication::class)->group(function(){
 });
 
 
-Route::controller((GoogleController::class))->group(function(){
+Route::controller((SocialController::class))->group(function(){
 
+    // Google Auth
     Route::get('/auth/google', 'RedirectToGoogle');
     Route::get('/auth/google/callback', 'handleGoogleCallBack');
+
+    // Facebook Auth
+    Route::get('auth/facebook', 'redirectToFacebook');
+    Route::get('auth/facebook/callback', 'handleFacebookCallBack');
 
 });
 

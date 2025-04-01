@@ -1,7 +1,10 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="index.html" class="app-brand-link">
-        <span class="app-brand-text demo menu-text fw-bolder">Asset Management System</span>
+      <a href="/dashboard" class="app-brand-link">
+        <span class="app-brand-logo demo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Southern_Leyte_State_University.png" alt="Southern Leyte State University Logo" width="25" height="25">
+        </span>
+        <span class="app-brand-text demo menu-text fw-bolder"> Asset Management</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -29,8 +32,8 @@
           <div data-i18n="Basic">Users</div>
         </a>
       </li>
-      
-      
+
+
       <!-- Components -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
       <!-- Cards -->

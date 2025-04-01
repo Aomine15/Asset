@@ -63,8 +63,15 @@
           <!-- Register -->
           <div class="card">
             <div class="card-body">
-              <h3 class="mb-4 mt-4">Asset Management System</h3>
-              <p class="mb-3">Please sign-in to your account</p>
+                  <!-- Logo -->
+                <div class="app-brand justify-content-center">
+                    <a>
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Southern_Leyte_State_University.png" alt="Southern Leyte State University Logo" width="100" height="100">
+                     </a>
+                 </div>
+                   <!-- /Logo -->
+                <h3 class="mb-4 mt-4">Failure Prediction System for Asset Management</h3>
+                <p class="mb-3">Please sign-in to your account</p>
 
                 @if (Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show 2" role="alert">
@@ -81,7 +88,7 @@
 
               <form id="formAuthentication" class="mb-3" action="{{route('LoginVerified')}}" method="POST">
                 @csrf
-                <div class="mb-3 mt-4">
+                <div class="mb-3 mt-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
@@ -112,7 +119,7 @@
                   </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
               </form>

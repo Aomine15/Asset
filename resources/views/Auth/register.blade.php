@@ -77,8 +77,15 @@
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
+              {{-- Logo --}}
+              <div class="app-brand justify-content-center">
+                <a>
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Southern_Leyte_State_University.png" alt="Southern Leyte State University Logo" width="90" height="90">
+                </a>
+            </div>
+                {{-- /Logo --}}
+            <h3 class="mb-3 mt-4">Failure Prediction System for Asset Management</h3>
               <!-- /Logo -->
-              <h3 class="mb-4 mt-4">Asset Management System</h3>
               <p class="mb-3">Sign up here!</p>
 
                 @if (Session::has('fail'))
@@ -88,7 +95,7 @@
                         </span>
                 @endif
 
-              <form id="formAuthentication" class="mb-3" action="{{route('Registered')}}" method="POST">
+              <form id="formAuthentication" class="mb-2" action="{{route('Registered')}}" method="POST">
                 @csrf
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
@@ -174,10 +181,5 @@
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
